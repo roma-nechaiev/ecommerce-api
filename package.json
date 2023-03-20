@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "set DEBUG=app:*,express:router  & nodemon src/index.js"
+    "start": "set DEBUG=app:*,express:router  & node src/index.js"
   },
   "keywords": [],
   "author": "",
