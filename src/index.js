@@ -3,18 +3,16 @@ const debug = require('debug')('app:server');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
+const {
+  usersRoute, authRoute, productsRoute, categoriesRoute, reviewsRoute, ordersRoute,
+} = require('./routes');
+
+dotenv.config();
 require('./database');
 
-const usersRoute = require('./routes/users');
-const authRoute = require('./routes/auth');
-const categoriesRoute = require('./routes/categories');
-const productsRoute = require('./routes/products');
-const reviewsRoute = require('./routes/reviews');
-const ordersRoute = require('./routes/orders');
 const errors = require('./middleware/errors');
 
 const app = express();
-dotenv.config();
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));

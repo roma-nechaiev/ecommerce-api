@@ -1,7 +1,7 @@
+const debug = require('debug')('app:reviews');
 const Product = require('../models/Product');
 const Review = require('../models/Review');
 const AppError = require('./AppError');
-const debug = require('debug')('app:reviews');
 
 const calculateRating = async (id) => {
   try {

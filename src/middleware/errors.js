@@ -1,6 +1,11 @@
 const debug = require('debug')('app:errors');
+const {
+  JsonWebTokenError,
+  TokenExpiredError,
+} = require('jsonwebtoken');
 const AppError = require('../utils/AppError');
 
+// eslint-disable-next-line no-unused-vars
 module.exports = (err, req, res, next) => {
   let error = { ...err };
   error.statusCode = err.statusCode || 500;
@@ -17,10 +22,10 @@ module.exports = (err, req, res, next) => {
     const message = `Invalid input data. ${errors.join('. ')}`;
     error = new AppError(message, 400);
   }
-  if (err.name === 'JsonWebTokenError') {
+  if (err instanceof JsonWebTokenError) {
     error = new AppError('Invalid token', 401);
   }
-  if (err.name === 'TokenExpiredError') {
+  if (err instanceof TokenExpiredError) {
     error = new AppError('Token expired', 401);
   }
 

@@ -6,7 +6,7 @@ const mongooseOptions = {
 };
 
 const connection = mongoose.connect(
-  'mongodb://localhost:27017/shop',
+  process.env.MONGODB_URI,
   mongooseOptions,
 );
 connection
